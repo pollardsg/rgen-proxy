@@ -1,9 +1,4 @@
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Only POST method allowed' });
-  }
-
-  const { prompt } = req.body;
   const apiKey = process.env.OPENAI_API_KEY;
 
   if (!apiKey) {
@@ -15,6 +10,12 @@ export default async function handler(req, res) {
     console.error('Have the key');
     return res.status(500).json({ error: 'Server misconfiguration: missing API key' });
   }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Only POST method allowed' });
+  }
+
+  const { prompt } = req.body;
 
   try {
     const completion = await fetch('https://api.openai.com/v1/chat/completions', {
