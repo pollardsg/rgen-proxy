@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   else
   {
     console.error('Have the key');
-    return res.status(500).json({ error: 'Server misconfiguration: missing API key' });
+    return res.status(500).json({ error: 'have the API key' });
   }
 
   if (req.method !== 'POST') {
