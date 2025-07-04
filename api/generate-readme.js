@@ -5,12 +5,7 @@ export default async function handler(req, res) {
     console.error('Missing OpenAI API key');
     return res.status(500).json({ error: 'Server misconfiguration: missing API key' });
   }
-  else
-  {
-    console.error('Have the key');
-    return res.status(500).json({ error: 'have the API key' });
-  }
-
+  
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Only POST method allowed' });
   }
